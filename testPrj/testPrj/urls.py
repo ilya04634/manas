@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import index 
+from core.views import language_selection, russian_page, english_page 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index, name='index')
+   path('', language_selection, name='language_selection'),  # Стартовая страница
+    path('ru/', russian_page, name='russian_page'),  # Русская версия
+    path('en/', english_page, name='english_page'),  # Английская версия
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
